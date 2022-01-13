@@ -5,10 +5,10 @@ Out-File "$env:TEMP\attach2.txt" -InputObject "select vdisk file='C:\AppStream\A
 Out-File "$env:TEMP\attach2.txt" -InputObject "attach vdisk" -Encoding utf8 -Append
 Out-File "$env:TEMP\attach2.txt" -InputObject "select partition 1" -Encoding utf8 -Append
 Out-File "$env:TEMP\attach2.txt" -InputObject "remove all noerr" -Encoding utf8 -Append
-Out-File "$env:TEMP\attach2.txt" -InputObject "assign mount='d:'" -Encoding utf8 -Append
+Out-File "$env:TEMP\attach2.txt" -InputObject "assign mount='f:'" -Encoding utf8 -Append
 Out-File "$env:TEMP\attach2.txt" -InputObject "exit" -Encoding utf8 -Append
 diskpart /s $env:TEMP\attach2.txt
 $env:TEMP
-$clientexe = (Get-ChildItem "d:\*.exe" | Select-Object -First 1).name
-$p = Start-Process -NoNewWindow -FilePath "d:\$clientexe" -ArgumentList "--silent --all-users --domain=$domain --add-trusted-source=$domain" -PassThru
+$clientexe = (Get-ChildItem "f:\*.exe" | Select-Object -First 1).name
+$p = Start-Process -NoNewWindow -FilePath "f:\$clientexe" -ArgumentList "--silent --all-users --domain=$domain --add-trusted-source=$domain" -PassThru
 $p.WaitForExit()
